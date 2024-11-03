@@ -8,13 +8,18 @@ const env = getEnv()
 try {
     const redis = new Redis(env.REDIS_URL);
 
-    const key = 'key';
+    const numKeys = await redis.dbsize();
+
+    const newKey = numKeys + 1;
 
     const randomPuzzle = await getRandomChessPuzzle();
+
+    console.log("Adding new puzzle to database...");
+    console.log("Key: " + newKey);
+    console.log("Puzzle: ");
     console.log(randomPuzzle);
 
-    // redis.set(key, 'Hello World!');
-
+    await redis.set(newKey.toString(), JSON.stringify(randomPuzzle));
     redis.disconnect();
 }
 catch (error) {
