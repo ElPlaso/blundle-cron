@@ -1,0 +1,29 @@
+{
+  "name": "blundle-cron",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "scripts": {
+    "compile": "tsc",
+    "start": "node ./dist/index.js",
+    "dev": "npm run compile && node ./dist/index.js",
+    "lint": "eslint . --ext ts",
+    "types": "tsc --noEmit",
+    "format": "prettier --write './**/*.ts'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElPlaso/blundle-cron.git"
+  },
+  "author": "Plaso Kusay",
+  "license": "ISC",
+  "description": "Script to update Blundle daily puzzle.",
+  "devDependencies": {
+    "@eslint/js": "^9.14.0",
+    "@types/node": "^22.8.7",
+    "eslint": "^9.14.0",
+    "globals": "^15.11.0",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.12.2"
+  }
+}
