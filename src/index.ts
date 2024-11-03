@@ -1,19 +1,25 @@
-import 'dotenv/config';
 import Redis from "ioredis";
 
-const { REDIS_URL } = process.env;
+import { getEnv } from './env.js'
+import { getRandomChessPuzzle } from "./chess_puzzles/index.js";
 
-if (!REDIS_URL) {
-    throw new Error('Redis URL not provided');
-}
+const env = getEnv()
 
 try {
-    const renderRedis = new Redis(REDIS_URL);
+    const redis = new Redis(env.REDIS_URL);
 
-    console.log(REDIS_URL);
+    const key = 'key';
+
+    const randomPuzzle = await getRandomChessPuzzle();
+    console.log(randomPuzzle);
+
+    // redis.set(key, 'Hello World!');
+
+    redis.disconnect();
 }
 catch (error) {
     console.error(error);
+    process.exit(1);
 }
 
 
