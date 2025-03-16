@@ -22,7 +22,7 @@ export async function getRandomChessPuzzle() {
     )
 
     if (response.status !== 200) {
-        throw new Error(`Failed to fetch randopm puzzle: ${response.statusText}`)
+        throw new Error(`Failed to fetch random puzzle: ${response.statusText}`)
     }
 
     const data = (await response.json()) as ReturnType
